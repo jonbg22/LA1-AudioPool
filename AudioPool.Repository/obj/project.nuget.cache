@@ -1,8 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "yaauVak015Y=",
+  "dgSpecHash": "FWHUFirmb/sNeKPY6W/rRd3tb9CmAoniO6l+5Rv5Yyb9xSIwHXQHmprF5yIbVjfSQW9gUW8QF0WbiEUWhH/GIw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nonni\\Documents\\HR\\Haust2024\\VEFT\\LA1-AudioPool\\AudioPool.Repository\\AudioPool.Repository.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/nonni/Documents/HR/haust2024/VEFT/LA1/AudioPool.Repository/AudioPool.Repository.csproj",
+  "expectedPackageFiles": [
+    "/home/nonni/.nuget/packages/microsoft.entityframeworkcore/8.0.8/microsoft.entityframeworkcore.8.0.8.nupkg.sha512",
+    "/home/nonni/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.8/microsoft.entityframeworkcore.abstractions.8.0.8.nupkg.sha512",
+    "/home/nonni/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.8/microsoft.entityframeworkcore.analyzers.8.0.8.nupkg.sha512",
+    "/home/nonni/.nuget/packages/microsoft.extensions.caching.abstractions/8.0.0/microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
+    "/home/nonni/.nuget/packages/microsoft.extensions.caching.memory/8.0.0/microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
+    "/home/nonni/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "/home/nonni/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "/home/nonni/.nuget/packages/microsoft.extensions.logging/8.0.0/microsoft.extensions.logging.8.0.0.nupkg.sha512",
+    "/home/nonni/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "/home/nonni/.nuget/packages/microsoft.extensions.options/8.0.0/microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "/home/nonni/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
