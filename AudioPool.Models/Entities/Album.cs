@@ -15,10 +15,9 @@ namespace AudioPool.Models.Entities
         // Navigation properties
         
         // Many-to-many relationship with Artists
-        public ICollection<AlbumArtist> AlbumArtists { get; set; } = new List<AlbumArtist>();
+        public ICollection<Artist> Artists { get; set; } = new List<Artist>();
 
         // One-to-many relationship with Song
         public ICollection<Song> Songs { get; set; } = new List<Song>();
-
     }
 }

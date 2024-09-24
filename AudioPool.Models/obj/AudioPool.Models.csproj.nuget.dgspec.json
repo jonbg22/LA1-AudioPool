@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nonni\\Documents\\HR\\Haust2024\\VEFT\\LA1-AudioPool\\AudioPool.Models\\AudioPool.Models.csproj": {}
+    "/home/nonni/Documents/HR/haust2024/VEFT/LA1/AudioPool.Models/AudioPool.Models.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nonni\\Documents\\HR\\Haust2024\\VEFT\\LA1-AudioPool\\AudioPool.Models\\AudioPool.Models.csproj": {
+    "/home/nonni/Documents/HR/haust2024/VEFT/LA1/AudioPool.Models/AudioPool.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nonni\\Documents\\HR\\Haust2024\\VEFT\\LA1-AudioPool\\AudioPool.Models\\AudioPool.Models.csproj",
+        "projectUniqueName": "/home/nonni/Documents/HR/haust2024/VEFT/LA1/AudioPool.Models/AudioPool.Models.csproj",
         "projectName": "AudioPool.Models",
-        "projectPath": "C:\\Users\\nonni\\Documents\\HR\\Haust2024\\VEFT\\LA1-AudioPool\\AudioPool.Models\\AudioPool.Models.csproj",
-        "packagesPath": "C:\\Users\\nonni\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nonni\\Documents\\HR\\Haust2024\\VEFT\\LA1-AudioPool\\AudioPool.Models\\obj\\",
+        "projectPath": "/home/nonni/Documents/HR/haust2024/VEFT/LA1/AudioPool.Models/AudioPool.Models.csproj",
+        "packagesPath": "/home/nonni/.nuget/packages/",
+        "outputPath": "/home/nonni/Documents/HR/haust2024/VEFT/LA1/AudioPool.Models/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nonni\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/nonni/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -58,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.108/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -11,11 +11,14 @@ namespace AudioPool.Models.Entities
         public string DateStarted { get; set; } = "";
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
         public DateTime? DateModified { get; set; }
-        public string ModifiedBy { get; set; } = "AudioPoolAdmin";
+        public string? ModifiedBy { get; set; } = "AudioPoolAdmin";
 
         // Navigation properties
 
+        // Many to many relation with Genre
         public ICollection<Genre> Genres { get; set; } = new List<Genre>();
+        
+        // One to many relation with Album
         public ICollection<Album> Albums { get; set; } = new List<Album>();
 
     }
