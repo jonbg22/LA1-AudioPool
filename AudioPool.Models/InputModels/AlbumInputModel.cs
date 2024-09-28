@@ -17,6 +17,4 @@ public class AlbumInputModel
     public string CoverImageUrl { get; set; } = "";
     [MinLength(10)]
     public string Description { get; set; } = "";
-
-
 }

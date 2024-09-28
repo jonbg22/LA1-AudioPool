@@ -1,12 +1,30 @@
 using AudioPool.Repository.Contexts;
+using AudioPool.Repository.Implimentations;
+using AudioPool.Services.Implimentations;
+using AudioPool.WebApi.Implimentations;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// Repositories
+builder.Services.AddTransient<GenreRepository>();
+builder.Services.AddTransient<ArtistRepository>();
+builder.Services.AddTransient<AlbumRepository>();
+builder.Services.AddTransient<SongRepository>();
+// Services
+builder.Services.AddTransient<GenreService>();
+builder.Services.AddTransient<ArtistService>();
+builder.Services.AddTransient<AlbumService>();
+builder.Services.AddTransient<SongService>();
+// Controllers
+builder.Services.AddTransient<GenreController>();
+builder.Services.AddTransient<ArtistController>();
+builder.Services.AddTransient<AlbumController>();
+builder.Services.AddTransient<SongController>();
 
 // Here we have the connection to the Sqlite database
-builder.Services.AddDbContext<MusicDbContext>(options => 
+builder.Services.AddDbContext<MusicDbContext>(options =>
 {
     // Package that gives us access to Sqlite. Now we can inject MusicDbContext
     // everywhere in our application.
