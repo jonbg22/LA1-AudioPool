@@ -1,34 +1,36 @@
 using AudioPool.Models.InputModels;
+using AudioPool.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AudioPool.WebApi.Implimentations
+namespace AudioPool.WebApi.Implimentations;
+
+[ApiController]
+[Route("songs")]
+public class SongController(ISongService songService) : ControllerBase
 {
-    [ApiController]
-    [Route("songs")]
-    public class SongController : ControllerBase
+    [HttpGet("")]
+    public IActionResult GetSongById(int id)
     {
-        [HttpGet("")]
-        public IActionResult GetSongById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        var song = songService.GetSongById(id);
+        if (song == null) return NotFound();
+        return Ok(song);
+    }
 
-        [HttpDelete("{id}")]
-        public IActionResult DeleteSong(int id)
-        {
-            throw new NotImplementedException();
-        }
+    [HttpDelete("{id}")]
+    public IActionResult DeleteSong(int id)
+    {
+        throw new NotImplementedException();
+    }
 
-        [HttpPut("{id}")]
-        public IActionResult UpdateSong(SongInputModel song, int id)
-        {
-            throw new NotImplementedException();
-        }
+    [HttpPut("{id}")]
+    public IActionResult UpdateSong(SongInputModel song, int id)
+    {
+        throw new NotImplementedException();
+    }
 
-        [HttpPost("")]
-        public IActionResult CreateNewSong(SongInputModel song)
-        {
-            throw new NotImplementedException();
-        }
+    [HttpPost("")]
+    public IActionResult CreateNewSong(SongInputModel song)
+    {
+        throw new NotImplementedException();
     }
 }
