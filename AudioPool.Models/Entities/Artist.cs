@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 
 namespace AudioPool.Models.Entities
 {
@@ -8,7 +7,7 @@ namespace AudioPool.Models.Entities
         public string Name { get; set; } = "";
         public string? Bio { get; set; }
         public string? CoverImageUrl { get; set; }
-        public string DateStarted { get; set; } = "";
+        public string DateOfStart { get; set; } = "";
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
         public DateTime? DateModified { get; set; }
         public string? ModifiedBy { get; set; } = "AudioPoolAdmin";
