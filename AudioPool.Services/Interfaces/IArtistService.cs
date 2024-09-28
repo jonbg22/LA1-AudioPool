@@ -5,9 +5,10 @@ namespace AudioPool.Services.Interfaces;
 
 public interface IArtistService
 {
-    IEnumerable<ArtistDto> GetAllArtist();
+    IEnumerable<ArtistDto> GetAllArtists();
     ArtistDetailsDto GetArtistById(int id);
+    IEnumerable<ArtistDto> GetArtistAlbums(int artistId);
     int CreateNewArtist(ArtistInputModel artist);
-    int UpdateArtist(int id, ArtistInputModel artist);
+    void UpdateArtist(int id, ArtistInputModel artist);
     void LinkArtistToGenre(int artistId, int genreId);
 }
