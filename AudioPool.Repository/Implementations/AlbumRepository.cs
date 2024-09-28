@@ -1,14 +1,17 @@
 using AudioPool.Models.Dtos;
 using AudioPool.Models.InputModels;
+using AudioPool.Repository.Contexts;
 using AudioPool.Repository.Interfaces;
 
 namespace AudioPool.Repository.Implimentations
 {
     public class AlbumRepository : IAlbumRepository
     {
-        public int CreateNewAlbum(AlbumInputModel album)
+        private readonly MusicDbContext _dbContext;
+
+        public AlbumRepository(MusicDbContext dbContext)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
         }
 
         public AlbumDetailsDto GetAlbumById(int id)
@@ -17,6 +20,11 @@ namespace AudioPool.Repository.Implimentations
         }
 
         public IEnumerable<SongDto> GetSongsByAlbumId(int albumId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int CreateNewAlbum(AlbumInputModel album)
         {
             throw new NotImplementedException();
         }
