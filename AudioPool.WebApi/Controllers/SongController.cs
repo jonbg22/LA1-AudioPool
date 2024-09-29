@@ -1,5 +1,6 @@
 using AudioPool.Models.InputModels;
 using AudioPool.Services.Interfaces;
+using AudioPool.WebApi.Attributes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AudioPool.WebApi.Implimentations;
@@ -16,6 +17,7 @@ public class SongController(ISongService songService) : ControllerBase
         return Ok(song);
     }
 
+    [ApiToken]
     [HttpDelete("{id:int}")]
     public IActionResult DeleteSong(int id)
     {
@@ -23,6 +25,7 @@ public class SongController(ISongService songService) : ControllerBase
         return NoContent();
     }
 
+    [ApiToken]
     [HttpPut("{id:int}")]
     public IActionResult UpdateSong(SongInputModel song, int id)
     {
@@ -30,6 +33,7 @@ public class SongController(ISongService songService) : ControllerBase
         return NoContent();
     }
 
+    [ApiToken]
     [HttpPost("")]
     public IActionResult CreateNewSong(SongInputModel song)
     {
