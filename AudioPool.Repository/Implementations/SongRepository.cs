@@ -26,12 +26,12 @@ public class SongRepository(MusicDbContext context) : ISongRepository
     public void DeleteSong(int id)
     {
         var song = context.Songs.FirstOrDefault(s => s.Id == id);
-        if (song == null) throw new KeyNotFoundException();
+        if (song == null) return;
         context.Songs.Remove(song);
         context.SaveChanges();
     }
 
-    public SongDetailsDto GetSongById(int id)
+    public SongDetailsDto? GetSongById(int id)
     {
         var song = context.Songs
             .Include(s => s.Album)
@@ -47,18 +47,20 @@ public class SongRepository(MusicDbContext context) : ISongRepository
             .FirstOrDefault(s => s.Id == song.Id)?.TrackNumber ?? 0;
 
 
-        var songDto = new SongDetailsDto();
-        songDto.Id = song.Id;
-        songDto.Name = song.Name;
-        songDto.Duration = song.Duration;
-        songDto.TrackNumberOnAlbum = trackNumber;
-        songDto.Album = new AlbumDto
+        var songDto = new SongDetailsDto
         {
-            Id = song.Album.Id,
-            Name = song.Album.Name,
-            ReleaseDate = song.Album.ReleaseDate,
-            CoverImageUrl = song.Album.CoverImageUrl,
-            Description = song.Album.Description
+            Id = song.Id,
+            Name = song.Name,
+            Duration = song.Duration,
+            TrackNumberOnAlbum = trackNumber,
+            Album = new AlbumDto
+            {
+                Id = song.Album.Id,
+                Name = song.Album.Name,
+                ReleaseDate = song.Album.ReleaseDate,
+                CoverImageUrl = song.Album.CoverImageUrl,
+                Description = song.Album.Description
+            }
         };
         return songDto;
     }
@@ -66,7 +68,7 @@ public class SongRepository(MusicDbContext context) : ISongRepository
     public void UpdateSong(SongInputModel song, int id)
     {
         var songToUpdate = context.Songs.FirstOrDefault(s => s.Id == id);
-        if (songToUpdate == null) throw new KeyNotFoundException();
+        if (songToUpdate == null) return;
         songToUpdate.Id = id;
         songToUpdate.Name = song.Name;
         songToUpdate.Duration = song.Duration;

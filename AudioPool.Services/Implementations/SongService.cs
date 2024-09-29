@@ -12,7 +12,7 @@ public class SongService(ISongRepository songRepository) : ISongService
         return songRepository.CreateNewSong(song);
     }
 
-    public SongDetailsDto GetSongById(int id)
+    public SongDetailsDto? GetSongById(int id)
     {
         return songRepository.GetSongById(id);
     }
