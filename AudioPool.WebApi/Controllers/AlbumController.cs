@@ -1,4 +1,4 @@
-using AudioPool.Models.Dtos;
+using AudioPool.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AudioPool.WebApi.Implimentations
@@ -7,13 +7,20 @@ namespace AudioPool.WebApi.Implimentations
     [Route("albums")]
     public class AlbumController : ControllerBase
     {
-        [HttpGet("")]
-        public IActionResult GetAllAlbums()
+        private readonly IAlbumService _albumService;
+
+        public AlbumController(IAlbumService albumService)
         {
-            throw new NotImplementedException();
+            _albumService = albumService;
         }
 
         [HttpGet("{id}")]
+        public IActionResult GetAlbumById(int id)
+        {
+            return Ok(_albumService.GetAlbumById(id));
+        }
+
+        [HttpGet("{id}/songs")]
         public IActionResult GetSongsByAlbumId(int id)
         {
             throw new NotImplementedException();
