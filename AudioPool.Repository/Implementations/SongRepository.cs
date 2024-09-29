@@ -23,12 +23,13 @@ public class SongRepository(MusicDbContext context) : ISongRepository
         return newSong.Id;
     }
 
-    public void DeleteSong(int id)
+    public bool DeleteSong(int id)
     {
         var song = context.Songs.FirstOrDefault(s => s.Id == id);
-        if (song == null) return;
+        if (song == null) return false;
         context.Songs.Remove(song);
         context.SaveChanges();
+        return true;
     }
 
     public SongDetailsDto? GetSongById(int id)
@@ -65,16 +66,16 @@ public class SongRepository(MusicDbContext context) : ISongRepository
         return songDto;
     }
 
-    public void UpdateSong(SongInputModel song, int id)
+    public bool UpdateSong(SongInputModel song, int id)
     {
         var songToUpdate = context.Songs.FirstOrDefault(s => s.Id == id);
-        if (songToUpdate == null) return;
+        if (songToUpdate == null) return false;
         songToUpdate.Id = id;
         songToUpdate.Name = song.Name;
         songToUpdate.Duration = song.Duration;
         songToUpdate.AlbumId = song.AlbumId;
         context.Songs.Update(songToUpdate);
-
         context.SaveChanges();
+        return true;
     }
 }

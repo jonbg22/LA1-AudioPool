@@ -21,7 +21,8 @@ public class SongController(ISongService songService) : ControllerBase
     [HttpDelete("{id:int}")]
     public IActionResult DeleteSong(int id)
     {
-        songService.DeleteSong(id);
+        var songDeleted = songService.DeleteSong(id);
+        if (!songDeleted) return NotFound();
         return NoContent();
     }
 
@@ -29,7 +30,8 @@ public class SongController(ISongService songService) : ControllerBase
     [HttpPut("{id:int}")]
     public IActionResult UpdateSong(SongInputModel song, int id)
     {
-        songService.UpdateSong(song, id);
+        var songUpdated = songService.UpdateSong(song, id);
+        if (!songUpdated) return NotFound();
         return NoContent();
     }
 

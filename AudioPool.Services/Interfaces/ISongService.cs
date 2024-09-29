@@ -6,7 +6,7 @@ namespace AudioPool.Services.Interfaces;
 public interface ISongService
 {
     SongDetailsDto? GetSongById(int id);
-    void DeleteSong(int id);
-    void UpdateSong(SongInputModel song, int id);
+    bool DeleteSong(int id);
+    bool UpdateSong(SongInputModel song, int id);
     int CreateNewSong(SongInputModel song);
 }
