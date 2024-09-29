@@ -16,21 +16,24 @@ public class SongController(ISongService songService) : ControllerBase
         return Ok(song);
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:int}")]
     public IActionResult DeleteSong(int id)
     {
-        throw new NotImplementedException();
+        songService.DeleteSong(id);
+        return NoContent();
     }
 
-    [HttpPut("{id}")]
+    [HttpPut("{id:int}")]
     public IActionResult UpdateSong(SongInputModel song, int id)
     {
-        throw new NotImplementedException();
+        songService.UpdateSong(song, id);
+        return NoContent();
     }
 
     [HttpPost("")]
     public IActionResult CreateNewSong(SongInputModel song)
     {
-        throw new NotImplementedException();
+        var id = songService.CreateNewSong(song);
+        return CreatedAtAction(nameof(GetSongById), new { id }, null);
     }
 }

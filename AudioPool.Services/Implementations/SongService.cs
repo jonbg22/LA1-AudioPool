@@ -7,14 +7,9 @@ namespace AudioPool.Services.Implimentations;
 
 public class SongService(ISongRepository songRepository) : ISongService
 {
-    public void CreateNewSong(SongInputModel song)
+    public int CreateNewSong(SongInputModel song)
     {
-        throw new NotImplementedException();
-    }
-
-    public int DeleteSong(int id)
-    {
-        throw new NotImplementedException();
+        return songRepository.CreateNewSong(song);
     }
 
     public SongDetailsDto GetSongById(int id)
@@ -24,6 +19,11 @@ public class SongService(ISongRepository songRepository) : ISongService
 
     public void UpdateSong(SongInputModel song, int id)
     {
-        throw new NotImplementedException();
+        songRepository.UpdateSong(song, id);
+    }
+
+    public void DeleteSong(int id)
+    {
+        songRepository.DeleteSong(id);
     }
 }

@@ -1,4 +1,5 @@
 using AudioPool.Models.Dtos;
+using AudioPool.Models.Entities;
 using AudioPool.Models.InputModels;
 using AudioPool.Repository.Contexts;
 using AudioPool.Repository.Interfaces;
@@ -10,12 +11,24 @@ public class SongRepository(MusicDbContext context) : ISongRepository
 {
     public int CreateNewSong(SongInputModel song)
     {
-        throw new NotImplementedException();
+        var newSong = new Song
+        {
+            Name = song.Name,
+            Duration = song.Duration,
+            AlbumId = song.AlbumId
+        };
+
+        context.Songs.Add(newSong);
+        context.SaveChanges();
+        return newSong.Id;
     }
 
     public void DeleteSong(int id)
     {
-        throw new NotImplementedException();
+        var song = context.Songs.FirstOrDefault(s => s.Id == id);
+        if (song == null) throw new KeyNotFoundException();
+        context.Songs.Remove(song);
+        context.SaveChanges();
     }
 
     public SongDetailsDto GetSongById(int id)
@@ -52,6 +65,14 @@ public class SongRepository(MusicDbContext context) : ISongRepository
 
     public void UpdateSong(SongInputModel song, int id)
     {
-        throw new NotImplementedException();
+        var songToUpdate = context.Songs.FirstOrDefault(s => s.Id == id);
+        if (songToUpdate == null) throw new KeyNotFoundException();
+        songToUpdate.Id = id;
+        songToUpdate.Name = song.Name;
+        songToUpdate.Duration = song.Duration;
+        songToUpdate.AlbumId = song.AlbumId;
+        context.Songs.Update(songToUpdate);
+
+        context.SaveChanges();
     }
 }
