@@ -1,5 +1,6 @@
 using AudioPool.Models.InputModels;
 using AudioPool.Services.Interfaces;
+using AudioPool.WebApi.Attributes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AudioPool.WebApi.Implimentations
@@ -27,6 +28,7 @@ namespace AudioPool.WebApi.Implimentations
             return Ok(_albumService.GetSongsByAlbumId(id));
         }
 
+        [ApiToken]
         [HttpPost("")]
         public IActionResult CreateNewAlbum([FromBody] AlbumInputModel album)
         {
@@ -34,6 +36,7 @@ namespace AudioPool.WebApi.Implimentations
             return CreatedAtRoute("GetAlbumById", new { id = newId }, null);
         }
 
+        [ApiToken]
         [HttpDelete("{id}")]
         public IActionResult DeleteAlbum(int id)
         {
