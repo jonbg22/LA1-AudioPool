@@ -1,0 +1,322 @@
+.
+├── structure.txt
+├── AudioPool.WebApi
+│   ├── obj
+│   │   ├── rider.project.restore.info
+│   │   ├── rider.project.model.nuget.info
+│   │   ├── project.packagespec.json
+│   │   ├── project.nuget.cache
+│   │   ├── project.assets.json
+│   │   ├── Debug
+│   │   │   └── net8.0
+│   │   │       ├── staticwebassets.build.json
+│   │   │       ├── staticwebassets
+│   │   │       │   ├── msbuild.buildTransitive.AudioPool.WebApi.props
+│   │   │       │   ├── msbuild.buildMultiTargeting.AudioPool.WebApi.props
+│   │   │       │   └── msbuild.build.AudioPool.WebApi.props
+│   │   │       ├── refint
+│   │   │       │   └── AudioPool.WebApi.dll
+│   │   │       ├── ref
+│   │   │       │   └── AudioPool.WebApi.dll
+│   │   │       ├── apphost
+│   │   │       ├── AudioPool.WebApi.sourcelink.json
+│   │   │       ├── AudioPool.WebApi.pdb
+│   │   │       ├── AudioPool.WebApi.genruntimeconfig.cache
+│   │   │       ├── AudioPool.WebApi.dll
+│   │   │       ├── AudioPool.WebApi.csproj.FileListAbsolute.txt
+│   │   │       ├── AudioPool.WebApi.csproj.CoreCompileInputs.cache
+│   │   │       ├── AudioPool.WebApi.csproj.AssemblyReference.cache
+│   │   │       ├── AudioPool.WebApi.assets.cache
+│   │   │       ├── AudioPool.WebApi.MvcApplicationPartsAssemblyInfo.cs
+│   │   │       ├── AudioPool.WebApi.MvcApplicationPartsAssemblyInfo.cache
+│   │   │       ├── AudioPool.WebApi.GlobalUsings.g.cs
+│   │   │       ├── AudioPool.WebApi.GeneratedMSBuildEditorConfig.editorconfig
+│   │   │       ├── AudioPool.WebApi.AssemblyInfoInputs.cache
+│   │   │       ├── AudioPool.WebApi.AssemblyInfo.cs
+│   │   │       └── AudioPoo.D24F93B9.Up2Date
+│   │   ├── AudioPool.WebApi.csproj.nuget.g.targets
+│   │   ├── AudioPool.WebApi.csproj.nuget.g.props
+│   │   ├── AudioPool.WebApi.csproj.nuget.dgspec.json
+│   │   └── AudioPool.WebApi.csproj.EntityFrameworkCore.targets
+│   ├── music.db
+│   ├── bin
+│   │   └── Debug
+│   │       └── net8.0
+│   │           ├── runtimes
+│   │           │   ├── win-x86
+│   │           │   │   └── native
+│   │           │   │       └── e_sqlite3.dll
+│   │           │   ├── win-x64
+│   │           │   │   └── native
+│   │           │   │       └── e_sqlite3.dll
+│   │           │   ├── win-arm64
+│   │           │   │   └── native
+│   │           │   │       └── e_sqlite3.dll
+│   │           │   ├── win-arm
+│   │           │   │   └── native
+│   │           │   │       └── e_sqlite3.dll
+│   │           │   ├── osx-x64
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.dylib
+│   │           │   ├── osx-arm64
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.dylib
+│   │           │   ├── maccatalyst-x64
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.dylib
+│   │           │   ├── maccatalyst-arm64
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.dylib
+│   │           │   ├── linux-x86
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.so
+│   │           │   ├── linux-x64
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.so
+│   │           │   ├── linux-s390x
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.so
+│   │           │   ├── linux-ppc64le
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.so
+│   │           │   ├── linux-musl-x64
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.so
+│   │           │   ├── linux-musl-arm64
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.so
+│   │           │   ├── linux-musl-arm
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.so
+│   │           │   ├── linux-mips64
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.so
+│   │           │   ├── linux-armel
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.so
+│   │           │   ├── linux-arm64
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.so
+│   │           │   ├── linux-arm
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.so
+│   │           │   ├── browser-wasm
+│   │           │   │   └── nativeassets
+│   │           │   │       └── net7.0
+│   │           │   │           └── e_sqlite3.a
+│   │           │   ├── alpine-x64
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.so
+│   │           │   ├── alpine-arm64
+│   │           │   │   └── native
+│   │           │   │       └── libe_sqlite3.so
+│   │           │   └── alpine-arm
+│   │           │       └── native
+│   │           │           └── libe_sqlite3.so
+│   │           ├── appsettings.json
+│   │           ├── appsettings.Development.json
+│   │           ├── System.CodeDom.dll
+│   │           ├── Swashbuckle.AspNetCore.SwaggerUI.dll
+│   │           ├── Swashbuckle.AspNetCore.SwaggerGen.dll
+│   │           ├── Swashbuckle.AspNetCore.Swagger.dll
+│   │           ├── SQLitePCLRaw.provider.e_sqlite3.dll
+│   │           ├── SQLitePCLRaw.core.dll
+│   │           ├── SQLitePCLRaw.batteries_v2.dll
+│   │           ├── Mono.TextTemplating.dll
+│   │           ├── Microsoft.OpenApi.dll
+│   │           ├── Microsoft.Extensions.DependencyModel.dll
+│   │           ├── Microsoft.EntityFrameworkCore.dll
+│   │           ├── Microsoft.EntityFrameworkCore.Sqlite.dll
+│   │           ├── Microsoft.EntityFrameworkCore.Relational.dll
+│   │           ├── Microsoft.EntityFrameworkCore.Design.dll
+│   │           ├── Microsoft.EntityFrameworkCore.Abstractions.dll
+│   │           ├── Microsoft.Data.Sqlite.dll
+│   │           ├── Humanizer.dll
+│   │           ├── AudioPool.WebApi.runtimeconfig.json
+│   │           ├── AudioPool.WebApi.pdb
+│   │           ├── AudioPool.WebApi.dll
+│   │           ├── AudioPool.WebApi.deps.json
+│   │           ├── AudioPool.WebApi
+│   │           ├── AudioPool.Services.pdb
+│   │           ├── AudioPool.Services.dll
+│   │           ├── AudioPool.Repository.pdb
+│   │           ├── AudioPool.Repository.dll
+│   │           ├── AudioPool.Models.pdb
+│   │           └── AudioPool.Models.dll
+│   ├── appsettings.json
+│   ├── appsettings.Development.json
+│   ├── Properties
+│   │   └── launchSettings.json
+│   ├── Program.cs
+│   ├── Controllers
+│   │   ├── SongController.cs
+│   │   ├── GenreController.cs
+│   │   ├── ArtistController.cs
+│   │   └── AlbumController.cs
+│   ├── AudioPool.WebApi.http
+│   ├── AudioPool.WebApi.csproj
+│   └── Attributes
+│       └── ApiTokenAttribute.cs
+├── AudioPool.Services
+│   ├── obj
+│   │   ├── rider.project.restore.info
+│   │   ├── rider.project.model.nuget.info
+│   │   ├── project.packagespec.json
+│   │   ├── project.nuget.cache
+│   │   ├── project.assets.json
+│   │   ├── Debug
+│   │   │   └── net8.0
+│   │   │       ├── refint
+│   │   │       │   └── AudioPool.Services.dll
+│   │   │       ├── ref
+│   │   │       │   └── AudioPool.Services.dll
+│   │   │       ├── AudioPool.Services.sourcelink.json
+│   │   │       ├── AudioPool.Services.pdb
+│   │   │       ├── AudioPool.Services.dll
+│   │   │       ├── AudioPool.Services.csproj.FileListAbsolute.txt
+│   │   │       ├── AudioPool.Services.csproj.CoreCompileInputs.cache
+│   │   │       ├── AudioPool.Services.csproj.AssemblyReference.cache
+│   │   │       ├── AudioPool.Services.assets.cache
+│   │   │       ├── AudioPool.Services.GlobalUsings.g.cs
+│   │   │       ├── AudioPool.Services.GeneratedMSBuildEditorConfig.editorconfig
+│   │   │       ├── AudioPool.Services.AssemblyInfoInputs.cache
+│   │   │       ├── AudioPool.Services.AssemblyInfo.cs
+│   │   │       └── AudioPoo.F0F664AB.Up2Date
+│   │   ├── AudioPool.Services.csproj.nuget.g.targets
+│   │   ├── AudioPool.Services.csproj.nuget.g.props
+│   │   ├── AudioPool.Services.csproj.nuget.dgspec.json
+│   │   └── AudioPool.Services.csproj.EntityFrameworkCore.targets
+│   ├── bin
+│   │   └── Debug
+│   │       └── net8.0
+│   │           ├── AudioPool.Services.pdb
+│   │           ├── AudioPool.Services.dll
+│   │           ├── AudioPool.Services.deps.json
+│   │           ├── AudioPool.Repository.pdb
+│   │           ├── AudioPool.Repository.dll
+│   │           ├── AudioPool.Models.pdb
+│   │           └── AudioPool.Models.dll
+│   ├── Interfaces
+│   │   ├── ISongService.cs
+│   │   ├── IGenreService.cs
+│   │   ├── IArtistService.cs
+│   │   └── IAlbumService.cs
+│   ├── Implementations
+│   │   ├── SongService.cs
+│   │   ├── GenreService.cs
+│   │   ├── ArtistService.cs
+│   │   └── AlbumService.cs
+│   └── AudioPool.Services.csproj
+├── AudioPool.Repository
+│   ├── obj
+│   │   ├── rider.project.restore.info
+│   │   ├── rider.project.model.nuget.info
+│   │   ├── project.packagespec.json
+│   │   ├── project.nuget.cache
+│   │   ├── project.assets.json
+│   │   ├── Debug
+│   │   │   └── net8.0
+│   │   │       ├── refint
+│   │   │       │   └── AudioPool.Repository.dll
+│   │   │       ├── ref
+│   │   │       │   └── AudioPool.Repository.dll
+│   │   │       ├── AudioPool.Repository.sourcelink.json
+│   │   │       ├── AudioPool.Repository.pdb
+│   │   │       ├── AudioPool.Repository.genruntimeconfig.cache
+│   │   │       ├── AudioPool.Repository.dll
+│   │   │       ├── AudioPool.Repository.csproj.FileListAbsolute.txt
+│   │   │       ├── AudioPool.Repository.csproj.CoreCompileInputs.cache
+│   │   │       ├── AudioPool.Repository.csproj.AssemblyReference.cache
+│   │   │       ├── AudioPool.Repository.assets.cache
+│   │   │       ├── AudioPool.Repository.GlobalUsings.g.cs
+│   │   │       ├── AudioPool.Repository.GeneratedMSBuildEditorConfig.editorconfig
+│   │   │       ├── AudioPool.Repository.AssemblyInfoInputs.cache
+│   │   │       ├── AudioPool.Repository.AssemblyInfo.cs
+│   │   │       └── AudioPoo.07F7F2F4.Up2Date
+│   │   ├── AudioPool.Repository.csproj.nuget.g.targets
+│   │   ├── AudioPool.Repository.csproj.nuget.g.props
+│   │   ├── AudioPool.Repository.csproj.nuget.dgspec.json
+│   │   └── AudioPool.Repository.csproj.EntityFrameworkCore.targets
+│   ├── bin
+│   │   └── Debug
+│   │       └── net8.0
+│   │           ├── AudioPool.Repository.runtimeconfig.json
+│   │           ├── AudioPool.Repository.pdb
+│   │           ├── AudioPool.Repository.dll
+│   │           ├── AudioPool.Repository.deps.json
+│   │           ├── AudioPool.Models.pdb
+│   │           └── AudioPool.Models.dll
+│   ├── Scripts
+│   │   └── initial.sql
+│   ├── Interfaces
+│   │   ├── ISongRepository.cs
+│   │   ├── IGenreRepository.cs
+│   │   ├── IArtistRepository.cs
+│   │   └── IAlbumRepository.cs
+│   ├── Implementations
+│   │   ├── SongRepository.cs
+│   │   ├── GenreRepository.cs
+│   │   ├── ArtistRepository.cs
+│   │   └── AlbumRepository.cs
+│   ├── Contexts
+│   │   └── MusicDbContext.cs
+│   └── AudioPool.Repository.csproj
+├── AudioPool.Models
+│   ├── obj
+│   │   ├── rider.project.restore.info
+│   │   ├── rider.project.model.nuget.info
+│   │   ├── project.packagespec.json
+│   │   ├── project.nuget.cache
+│   │   ├── project.assets.json
+│   │   ├── Debug
+│   │   │   └── net8.0
+│   │   │       ├── refint
+│   │   │       │   └── AudioPool.Models.dll
+│   │   │       ├── ref
+│   │   │       │   └── AudioPool.Models.dll
+│   │   │       ├── AudioPool.Models.sourcelink.json
+│   │   │       ├── AudioPool.Models.pdb
+│   │   │       ├── AudioPool.Models.dll
+│   │   │       ├── AudioPool.Models.csproj.FileListAbsolute.txt
+│   │   │       ├── AudioPool.Models.csproj.CoreCompileInputs.cache
+│   │   │       ├── AudioPool.Models.assets.cache
+│   │   │       ├── AudioPool.Models.GlobalUsings.g.cs
+│   │   │       ├── AudioPool.Models.GeneratedMSBuildEditorConfig.editorconfig
+│   │   │       ├── AudioPool.Models.AssemblyInfoInputs.cache
+│   │   │       └── AudioPool.Models.AssemblyInfo.cs
+│   │   ├── AudioPool.Models.csproj.nuget.g.targets
+│   │   ├── AudioPool.Models.csproj.nuget.g.props
+│   │   └── AudioPool.Models.csproj.nuget.dgspec.json
+│   ├── bin
+│   │   └── Debug
+│   │       └── net8.0
+│   │           ├── AudioPool.Models.pdb
+│   │           ├── AudioPool.Models.dll
+│   │           └── AudioPool.Models.deps.json
+│   ├── LinkRepresentation.cs
+│   ├── InputModels
+│   │   ├── SongInputModel.cs
+│   │   ├── GenreInputModel.cs
+│   │   ├── ArtistInputModel.cs
+│   │   └── AlbumInputModel.cs
+│   ├── HyperMediaModel.cs
+│   ├── HyperMediaExtensions.cs
+│   ├── Envelope.cs
+│   ├── Entities
+│   │   ├── Song.cs
+│   │   ├── Genre.cs
+│   │   ├── Artist.cs
+│   │   └── Album.cs
+│   ├── Dtos
+│   │   ├── SongDto.cs
+│   │   ├── SongDetailsDto.cs
+│   │   ├── GenreDto.cs
+│   │   ├── GenreDetailsDto.cs
+│   │   ├── ArtistDto.cs
+│   │   ├── ArtistDetailsDto.cs
+│   │   ├── AlbumDto.cs
+│   │   └── AlbumDetailsDto.cs
+│   └── AudioPool.Models.csproj
+└── AudioPool.API.sln
+
+98 directories, 222 files
