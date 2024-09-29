@@ -8,5 +8,5 @@ public interface IAlbumService
     AlbumDetailsDto GetAlbumById(int id);
     IEnumerable<SongDto> GetSongsByAlbumId(int albumId);
     int CreateNewAlbum(AlbumInputModel album);
-    int DeleteAlbum(int id);
+    void DeleteAlbum(int id);
 }

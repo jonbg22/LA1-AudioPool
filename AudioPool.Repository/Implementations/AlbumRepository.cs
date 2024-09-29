@@ -1,7 +1,9 @@
 using AudioPool.Models.Dtos;
+using AudioPool.Models.Entities;
 using AudioPool.Models.InputModels;
 using AudioPool.Repository.Contexts;
 using AudioPool.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace AudioPool.Repository.Implimentations
 {
@@ -17,7 +19,14 @@ namespace AudioPool.Repository.Implimentations
         {
             var album = _dbContext
                 .Albums
+                .Include(al => al.Artists)
+                .Include(al => al.Songs)
                 .FirstOrDefault(al => al.Id == id);
+
+            if (album == null)
+            {
+                return null;
+            }
 
             return new AlbumDetailsDto
             {
@@ -46,17 +55,81 @@ namespace AudioPool.Repository.Implimentations
 
         public IEnumerable<SongDto> GetSongsByAlbumId(int albumId)
         {
-            throw new NotImplementedException();
+            var album = _dbContext
+                .Albums
+                .Include(al => al.Songs)
+                .FirstOrDefault(a => a.Id == albumId);
+
+            if (album == null)
+            {
+                return null;
+            }
+
+            return album.Songs.Select(s => new SongDto
+            {
+                Id = s.Id,
+                Name = s.Name,
+                Duration = s.Duration
+            }).ToList();
         }
 
-        public int CreateNewAlbum(AlbumInputModel album)
+        public int CreateNewAlbum(AlbumInputModel albumInputModel)
         {
-            throw new NotImplementedException();
+            Album album = new Album
+            {
+                Name = albumInputModel.Name,
+                ReleaseDate = albumInputModel.ReleaseDate,
+                CoverImageUrl = albumInputModel.CoverImageUrl,
+                Description = albumInputModel.Description,
+                DateModified = DateTime.UtcNow
+            };
+
+            _dbContext.Albums.Add(album);
+            _dbContext.SaveChanges();
+
+            IEnumerable<int> artistIds = albumInputModel.ArtistIds;
+
+            foreach (var id in artistIds)
+            {
+                var artist = _dbContext
+                    .Artists
+                    .FirstOrDefault(a => a.Id == id);
+
+                if (artist == null)
+                {
+                    throw new KeyNotFoundException();
+                }
+
+                Artist artistLink = new Artist
+                {
+                    Id = artist.Id,
+                    Name = artist.Name,
+                    Bio = artist.Bio,
+                    CoverImageUrl = artist.CoverImageUrl,
+                    DateOfStart = artist.DateOfStart,
+                    DateCreated = artist.DateCreated,
+                    DateModified = artist.DateModified,
+                    ModifiedBy = artist.ModifiedBy
+                };
+
+                album.Artists.Add(artist);
+                _dbContext.SaveChanges();
+            }
+
+            return album.Id;
         }
 
         public void DeleteAlbum(int id)
         {
-            throw new NotImplementedException();
+            var album = _dbContext.Albums.FirstOrDefault(al => al.Id == id);
+
+            if (album == null)
+            {
+                return;
+            }
+
+            _dbContext.Albums.Remove(album);
+            _dbContext.SaveChanges();
         }
 
     }
