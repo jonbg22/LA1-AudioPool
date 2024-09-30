@@ -1,4 +1,5 @@
 using AudioPool.Models.Dtos;
+using AudioPool.Models.Entities;
 using AudioPool.Models.InputModels;
 using AudioPool.Repository.Contexts;
 using AudioPool.Repository.Interfaces;
@@ -10,15 +11,28 @@ public class SongRepository(MusicDbContext context) : ISongRepository
 {
     public int CreateNewSong(SongInputModel song)
     {
-        throw new NotImplementedException();
+        var newSong = new Song
+        {
+            Name = song.Name,
+            Duration = song.Duration,
+            AlbumId = song.AlbumId
+        };
+
+        context.Songs.Add(newSong);
+        context.SaveChanges();
+        return newSong.Id;
     }
 
-    public void DeleteSong(int id)
+    public bool DeleteSong(int id)
     {
-        throw new NotImplementedException();
+        var song = context.Songs.FirstOrDefault(s => s.Id == id);
+        if (song == null) return false;
+        context.Songs.Remove(song);
+        context.SaveChanges();
+        return true;
     }
 
-    public SongDetailsDto GetSongById(int id)
+    public SongDetailsDto? GetSongById(int id)
     {
         var song = context.Songs
             .Include(s => s.Album)
@@ -34,24 +48,34 @@ public class SongRepository(MusicDbContext context) : ISongRepository
             .FirstOrDefault(s => s.Id == song.Id)?.TrackNumber ?? 0;
 
 
-        var songDto = new SongDetailsDto();
-        songDto.Id = song.Id;
-        songDto.Name = song.Name;
-        songDto.Duration = song.Duration;
-        songDto.TrackNumberOnAlbum = trackNumber;
-        songDto.Album = new AlbumDto
+        var songDto = new SongDetailsDto
         {
-            Id = song.Album.Id,
-            Name = song.Album.Name,
-            ReleaseDate = song.Album.ReleaseDate,
-            CoverImageUrl = song.Album.CoverImageUrl,
-            Description = song.Album.Description
+            Id = song.Id,
+            Name = song.Name,
+            Duration = song.Duration,
+            TrackNumberOnAlbum = trackNumber,
+            Album = new AlbumDto
+            {
+                Id = song.Album.Id,
+                Name = song.Album.Name,
+                ReleaseDate = song.Album.ReleaseDate,
+                CoverImageUrl = song.Album.CoverImageUrl,
+                Description = song.Album.Description
+            }
         };
         return songDto;
     }
 
-    public void UpdateSong(SongInputModel song, int id)
+    public bool UpdateSong(SongInputModel song, int id)
     {
-        throw new NotImplementedException();
+        var songToUpdate = context.Songs.FirstOrDefault(s => s.Id == id);
+        if (songToUpdate == null) return false;
+        songToUpdate.Id = id;
+        songToUpdate.Name = song.Name;
+        songToUpdate.Duration = song.Duration;
+        songToUpdate.AlbumId = song.AlbumId;
+        context.Songs.Update(songToUpdate);
+        context.SaveChanges();
+        return true;
     }
 }

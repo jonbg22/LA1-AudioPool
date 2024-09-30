@@ -21,17 +21,17 @@ namespace AudioPool.Services.Implimentations
 
         public int CreateNewAlbum(AlbumInputModel album)
         {
-            throw new NotImplementedException();
+            return _albumRepository.CreateNewAlbum(album);
         }
 
-        public int DeleteAlbum(int id)
+        public void DeleteAlbum(int id)
         {
-            throw new NotImplementedException();
+            _albumRepository.DeleteAlbum(id);
         }
 
         public IEnumerable<SongDto> GetSongsByAlbumId(int albumId)
         {
-            throw new NotImplementedException();
+            return _albumRepository.GetSongsByAlbumId(albumId);
         }
     }
 }
