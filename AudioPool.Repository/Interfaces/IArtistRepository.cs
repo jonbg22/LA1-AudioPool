@@ -10,5 +10,6 @@ namespace AudioPool.Repository.Interfaces
         int CreateNewArtist(ArtistInputModel artist);
         void UpdateArtist(int id, ArtistInputModel artist);
         void LinkArtistToGenre(int artistId, int genreId);
+        IEnumerable<AlbumDto> getArtistAlbums(int id);
     }
 }
