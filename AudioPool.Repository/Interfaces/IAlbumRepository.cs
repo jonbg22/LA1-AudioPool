@@ -5,8 +5,8 @@ namespace AudioPool.Repository.Interfaces;
 
 public interface IAlbumRepository
 {
-    AlbumDetailsDto GetAlbumById(int id);
-    IEnumerable<SongDto> GetSongsByAlbumId(int albumId);
-    int CreateNewAlbum(AlbumInputModel albumInputModel);
-    void DeleteAlbum(int id);
+    AlbumDetailsDto? GetAlbumById(int id);
+    IEnumerable<SongDto>? GetSongsByAlbumId(int albumId);
+    int? CreateNewAlbum(AlbumInputModel albumInputModel);
+    bool DeleteAlbum(int id);
 }
