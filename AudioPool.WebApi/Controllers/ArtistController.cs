@@ -1,5 +1,6 @@
 using AudioPool.Models.InputModels;
 using AudioPool.Services.Interfaces;
+using AudioPool.WebApi.Attributes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AudioPool.WebApi.Implimentations
@@ -16,15 +17,19 @@ namespace AudioPool.WebApi.Implimentations
         }
 
         [HttpGet("")]
-        public IActionResult GetAllArtists()
+        public IActionResult GetAllArtists([FromQuery] int pageSize = 25,[FromQuery] int pageNumber = 1)
         {
-            return Ok(_artistService.GetAllArtist());
+            return Ok(_artistService.GetAllArtist(pageSize,pageNumber));
         }
 
         [HttpGet("{id}", Name = "GetArtistById")]
         public IActionResult GetArtistById(int id)
         {
-            return Ok(_artistService.GetArtistById(id));
+            var artist = _artistService.GetArtistById(id);
+            if (artist == null) {
+                return NotFound();
+            }
+            return Ok(artist);
         }
 
         [HttpGet("{id}/albums")]
@@ -33,20 +38,27 @@ namespace AudioPool.WebApi.Implimentations
             return Ok(_artistService.GetArtistAlbums(id));
         }
 
-
+        [ApiToken]
         [HttpPost("")]
-        public IActionResult CreateNewArtist(ArtistInputModel artist)
+        public IActionResult CreateNewArtist([FromBody] ArtistInputModel artist)
         {
             var createdId = _artistService.CreateNewArtist(artist);
             return CreatedAtRoute("GetArtistById", new { id = createdId }, null);
         }
 
-        [HttpPut("")]
-        public IActionResult UpdateArtist()
+        [ApiToken]
+        [HttpPut("{artistId}")]
+        public IActionResult UpdateArtist(int artistId, [FromBody] ArtistInputModel artist)
         {
-            throw new NotImplementedException();
-        }
+            var isOk = _artistService.UpdateArtist(artistId, artist);
+            if (!isOk) {
+                return NotFound();
+            }
 
+            return Ok();
+        }
+        
+        [ApiToken]
         [HttpPatch("{artistId}/genres/{genreId}")]
         public IActionResult LinkArtistToGenre(int artistId, int genreId)
         {
