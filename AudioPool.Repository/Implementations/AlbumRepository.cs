@@ -15,7 +15,7 @@ namespace AudioPool.Repository.Implimentations
             _dbContext = dbContext;
         }
 
-        public AlbumDetailsDto GetAlbumById(int id)
+        public AlbumDetailsDto? GetAlbumById(int id)
         {
             var album = _dbContext
                 .Albums
@@ -42,18 +42,18 @@ namespace AudioPool.Repository.Implimentations
                     Bio = a.Bio,
                     CoverImageUrl = a.CoverImageUrl,
                     DateOfStart = a.DateOfStart
-                }),
+                }).ToList(),
                 Songs = album.Songs.Select(s => new SongDto
                 {
                     Id = s.Id,
                     Name = s.Name,
                     Duration = s.Duration
-                })
+                }).ToList()
 
             };
         }
 
-        public IEnumerable<SongDto> GetSongsByAlbumId(int albumId)
+        public IEnumerable<SongDto>? GetSongsByAlbumId(int albumId)
         {
             var album = _dbContext
                 .Albums
@@ -73,7 +73,7 @@ namespace AudioPool.Repository.Implimentations
             }).ToList();
         }
 
-        public int CreateNewAlbum(AlbumInputModel albumInputModel)
+        public int? CreateNewAlbum(AlbumInputModel albumInputModel)
         {
             Album album = new Album
             {
@@ -89,7 +89,7 @@ namespace AudioPool.Repository.Implimentations
 
             IEnumerable<int> artistIds = albumInputModel.ArtistIds;
 
-            foreach (var id in artistIds)
+            foreach (int id in artistIds)
             {
                 var artist = _dbContext
                     .Artists
@@ -97,7 +97,7 @@ namespace AudioPool.Repository.Implimentations
 
                 if (artist == null)
                 {
-                    throw new KeyNotFoundException();
+                    return null;
                 }
 
                 Artist artistLink = new Artist
@@ -119,17 +119,19 @@ namespace AudioPool.Repository.Implimentations
             return album.Id;
         }
 
-        public void DeleteAlbum(int id)
+        public bool DeleteAlbum(int id)
         {
             var album = _dbContext.Albums.FirstOrDefault(al => al.Id == id);
 
             if (album == null)
             {
-                return;
+                return false;
             }
 
             _dbContext.Albums.Remove(album);
             _dbContext.SaveChanges();
+
+            return true;
         }
 
     }
