@@ -17,13 +17,13 @@ public class SongService(ISongRepository songRepository) : ISongService
         return songRepository.GetSongById(id);
     }
 
-    public void UpdateSong(SongInputModel song, int id)
+    public bool UpdateSong(SongInputModel song, int id)
     {
-        songRepository.UpdateSong(song, id);
+        return songRepository.UpdateSong(song, id);
     }
 
-    public void DeleteSong(int id)
+    public bool DeleteSong(int id)
     {
-        songRepository.DeleteSong(id);
+        return songRepository.DeleteSong(id);
     }
 }
