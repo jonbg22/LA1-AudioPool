@@ -1,3 +1,4 @@
+using AudioPool.Models;
 using AudioPool.Models.Dtos;
 using AudioPool.Models.InputModels;
 using AudioPool.Repository.Interfaces;
@@ -16,11 +17,25 @@ public class GenreService(IGenreRepository genreRepository) : IGenreService
 
     public IEnumerable<GenreDto> GetAllGenres()
     {
-        return _genreRepository.GetAllGenres();
+        var genres = _genreRepository.GetAllGenres();
+        var genreDtos = genres as GenreDto[] ?? genres.ToArray();
+        foreach (var genre in genreDtos)
+        {
+            genre.Links.AddReference("self", $"/api/genres/{genre.Id}");
+            var artists = _genreRepository.GetGenreArtists(genre.Id);
+            if (artists != null) genre.Links.AddListReference("artists", artists.Select(a => $"/api/artists/{a.Id}"));
+        }
+
+        return genreDtos;
     }
 
     public GenreDetailsDto? GetGenreById(int id)
     {
-        return _genreRepository.GetGenreById(id);
+        var genre = _genreRepository.GetGenreById(id);
+        if (genre == null) return null;
+        genre.Links.AddReference("self", $"/api/genres/{id}");
+        var artists = _genreRepository.GetGenreArtists(id);
+        if (artists != null) genre.Links.AddListReference("artists", artists.Select(a => $"/api/artists/{a.Id}"));
+        return genre;
     }
 }

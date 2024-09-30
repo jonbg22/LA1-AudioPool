@@ -49,4 +49,20 @@ public class GenreRepository(MusicDbContext context) : IGenreRepository
         };
         return genreDetailDto;
     }
+
+    public List<ArtistDto> GetGenreArtists(int genreId)
+    {
+        var genre = context.Genres
+            .Include(g => g.Artists)
+            .FirstOrDefault(g => g.Id == genreId);
+
+        if (genre == null) return null;
+
+        var artistDtos = genre.Artists.Select(a => new ArtistDto
+        {
+            Id = a.Id,
+            Name = a.Name
+        }).ToList();
+        return artistDtos;
+    }
 }
