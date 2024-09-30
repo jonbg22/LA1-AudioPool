@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace AudioPool.WebApi.Implimentations;
 
 [ApiController]
-[Route("songs")]
+[Route("api/songs")]
 public class SongController(ISongService songService) : ControllerBase
 {
     [HttpGet("")]
