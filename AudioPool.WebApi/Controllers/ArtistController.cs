@@ -17,16 +17,17 @@ namespace AudioPool.WebApi.Implimentations
         }
 
         [HttpGet("")]
-        public IActionResult GetAllArtists([FromQuery] int pageSize = 25,[FromQuery] int pageNumber = 1)
+        public IActionResult GetAllArtists([FromQuery] int pageSize = 25, [FromQuery] int pageNumber = 1)
         {
-            return Ok(_artistService.GetAllArtist(pageSize,pageNumber));
+            return Ok(_artistService.GetAllArtist(pageSize, pageNumber));
         }
 
         [HttpGet("{id}", Name = "GetArtistById")]
         public IActionResult GetArtistById(int id)
         {
             var artist = _artistService.GetArtistById(id);
-            if (artist == null) {
+            if (artist == null)
+            {
                 return NotFound();
             }
             return Ok(artist);
@@ -35,7 +36,9 @@ namespace AudioPool.WebApi.Implimentations
         [HttpGet("{id}/albums")]
         public IActionResult GetArtistAlbums(int id)
         {
-            return Ok(_artistService.GetArtistAlbums(id));
+            var albums = _artistService.GetArtistAlbums(id);
+            if (albums == null) return NotFound();
+            return Ok(albums);
         }
 
         [ApiToken]
@@ -51,18 +54,20 @@ namespace AudioPool.WebApi.Implimentations
         public IActionResult UpdateArtist(int artistId, [FromBody] ArtistInputModel artist)
         {
             var isOk = _artistService.UpdateArtist(artistId, artist);
-            if (!isOk) {
+            if (!isOk)
+            {
                 return NotFound();
             }
 
             return Ok();
         }
-        
+
         [ApiToken]
         [HttpPatch("{artistId}/genres/{genreId}")]
         public IActionResult LinkArtistToGenre(int artistId, int genreId)
         {
-            _artistService.LinkArtistToGenre(artistId, genreId);
+            var isOk = _artistService.LinkArtistToGenre(artistId, genreId);
+            if (!isOk) return NotFound();
             return Ok();
         }
     }

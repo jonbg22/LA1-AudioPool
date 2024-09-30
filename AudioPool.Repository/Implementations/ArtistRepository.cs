@@ -56,8 +56,9 @@ namespace AudioPool.Repository.Implimentations
             .Include(a => a.Albums)
             .Include(a => a.Genres)
             .FirstOrDefault(a => a.Id == id);
-            
-            if (artist == null) {
+
+            if (artist == null)
+            {
                 return null;
             }
 
@@ -74,12 +75,12 @@ namespace AudioPool.Repository.Implimentations
                     CoverImageUrl = al.CoverImageUrl,
                     Description = al.Description,
                     ReleaseDate = al.ReleaseDate
-                }),
+                }).ToList(),
                 Genres = artist.Genres.Select(g => new GenreDto
                 {
                     Id = g.Id,
                     Name = g.Name
-                })
+                }).ToList()
             };
         }
 
@@ -115,13 +116,11 @@ namespace AudioPool.Repository.Implimentations
                 return false;
             }
 
-            // Check if the genre is already associated with the artist to avoid duplicates
             if (!artist.Genres.Contains(genre))
             {
                 artist.Genres.Add(genre);
             }
 
-            // Check if the artist is already associated with the genre to avoid duplicates
             if (!genre.Artists.Contains(artist))
             {
                 genre.Artists.Add(artist);
@@ -139,14 +138,12 @@ namespace AudioPool.Repository.Implimentations
                 return false;
             }
 
-            // Update the existing artist's properties with the input model values
             existingArtist.Bio = artist.Bio;
             existingArtist.CoverImageUrl = artist.CoverImageUrl;
             existingArtist.DateOfStart = artist.DateOfStart;
             existingArtist.DateModified = DateTime.UtcNow;
             existingArtist.Name = artist.Name;
 
-            // Save changes to the database
             _musicDbContext.SaveChanges();
             return true;
 

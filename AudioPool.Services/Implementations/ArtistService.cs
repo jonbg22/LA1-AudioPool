@@ -32,7 +32,7 @@ namespace AudioPool.Services.Implimentations
                 a.Links.AddReference("edit", $"/api/artists/{a.Id}");
                 a.Links.AddReference("delete", $"/api/artists/{a.Id}");
                 a.Links.AddReference("albums", $"/api/artists/{a.Id}/albums");
-        
+
                 a.Links.AddListReference("genres", artistDetails!.Genres.Select(g => $"/api/genres/{g.Id}"));
             }
 

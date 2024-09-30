@@ -23,7 +23,7 @@ namespace AudioPool.WebApi.Implimentations
 
             if (album == null)
             {
-                return NotFound($"Album with id {id} was not found.");
+                return NotFound();
             }
 
             return Ok(album);
@@ -36,7 +36,7 @@ namespace AudioPool.WebApi.Implimentations
 
             if (songs == null)
             {
-                return NotFound($"Album with id {id} was not found.");
+                return NotFound();
             }
 
             return Ok(songs);
@@ -50,7 +50,7 @@ namespace AudioPool.WebApi.Implimentations
 
             if (newId == null)
             {
-                return NotFound("One or more artists with id in 'artistIds' was not found.");
+                return NotFound();
             }
 
             return CreatedAtRoute("GetAlbumById", new { id = newId }, null);
@@ -64,7 +64,7 @@ namespace AudioPool.WebApi.Implimentations
 
             if (!success)
             {
-                return NotFound($"Album with id {id} was not found.");
+                return NotFound();
             }
 
             return NoContent();
