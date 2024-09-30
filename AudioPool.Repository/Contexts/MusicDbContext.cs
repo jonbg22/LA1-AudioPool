@@ -25,8 +25,6 @@ namespace AudioPool.Repository.Contexts
             modelBuilder.Entity<Song>()
                 .Property(e => e.ModifiedBy)
                 .HasDefaultValue("AudioPoolAdmin");
-
-
         }
 
         public MusicDbContext(DbContextOptions<MusicDbContext> options) : base(options) { }

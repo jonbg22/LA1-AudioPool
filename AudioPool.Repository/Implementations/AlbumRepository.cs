@@ -100,18 +100,6 @@ namespace AudioPool.Repository.Implimentations
                     return null;
                 }
 
-                Artist artistLink = new Artist
-                {
-                    Id = artist.Id,
-                    Name = artist.Name,
-                    Bio = artist.Bio,
-                    CoverImageUrl = artist.CoverImageUrl,
-                    DateOfStart = artist.DateOfStart,
-                    DateCreated = artist.DateCreated,
-                    DateModified = artist.DateModified,
-                    ModifiedBy = artist.ModifiedBy
-                };
-
                 album.Artists.Add(artist);
                 _dbContext.SaveChanges();
             }

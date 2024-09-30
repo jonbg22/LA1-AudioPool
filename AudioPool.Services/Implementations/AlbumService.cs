@@ -28,14 +28,6 @@ namespace AudioPool.Services.Implimentations
             album.Links.AddReference("songs", $"api/album/{albumId}/songs");
             album.Links.AddListReference("artists", album.Artists.Select(a => $"/api/artists/{a.Id}"));
 
-            foreach (SongDto s in album.Songs)
-            {
-                s.Links.AddReference("self", $"/api/songs/{s.Id}");
-                s.Links.AddReference("delete", $"api/songs/{s.Id}");
-                s.Links.AddReference("update", $"api/songs/{s.Id}");
-                s.Links.AddReference("album", $"api/albums/{albumId}");
-            }
-
             return album;
         }
 
@@ -50,8 +42,8 @@ namespace AudioPool.Services.Implimentations
 
             foreach (SongDto s in songs)
             {
-                s.Links.AddReference("self", $"spi/songs/{s.Id}");
-                s.Links.AddReference("delete", $"pai/songs/{s.Id}");
+                s.Links.AddReference("self", $"api/songs/{s.Id}");
+                s.Links.AddReference("delete", $"api/songs/{s.Id}");
                 s.Links.AddReference("edit", $"api/songs/{s.Id}");
                 s.Links.AddReference("album", $"api/albums/{albumId}");
             }
