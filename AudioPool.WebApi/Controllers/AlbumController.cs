@@ -42,7 +42,7 @@ namespace AudioPool.WebApi.Implimentations
             return Ok(songs);
         }
 
-        [ApiToken]
+        // [ApiToken]
         [HttpPost("")]
         public IActionResult CreateNewAlbum([FromBody] AlbumInputModel album)
         {
@@ -56,7 +56,7 @@ namespace AudioPool.WebApi.Implimentations
             return CreatedAtRoute("GetAlbumById", new { id = newId }, null);
         }
 
-        [ApiToken]
+        // [ApiToken]
         [HttpDelete("{id}")]
         public IActionResult DeleteAlbum(int id)
         {
