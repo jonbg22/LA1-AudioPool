@@ -1,34 +1,47 @@
 using AudioPool.Models.Dtos;
 using AudioPool.Models.InputModels;
+using AudioPool.Repository.Interfaces;
 using AudioPool.Services.Interfaces;
 
 namespace AudioPool.Services.Implimentations
 {
     public class ArtistService : IArtistService
     {
+        private readonly IArtistRepository _artistRepository;
+
+        public ArtistService(IArtistRepository artistRepository)
+        {
+            _artistRepository = artistRepository;
+        }
+
         public int CreateNewArtist(ArtistInputModel artist)
         {
-            throw new NotImplementedException();
+            return _artistRepository.CreateNewArtist(artist);
         }
 
         public IEnumerable<ArtistDto> GetAllArtist()
         {
-            throw new NotImplementedException();
+            return _artistRepository.GetAllArtist();
         }
 
         public ArtistDetailsDto GetArtistById(int id)
         {
-            throw new NotImplementedException();
+            return _artistRepository.GetArtistById(id);
         }
 
         public void LinkArtistToGenre(int artistId, int genreId)
         {
-            throw new NotImplementedException();
+            _artistRepository.LinkArtistToGenre(artistId,genreId);
         }
 
-        public int UpdateArtist(int id, ArtistInputModel artist)
+        public void UpdateArtist(int id, ArtistInputModel artist)
         {
-            throw new NotImplementedException();
+            _artistRepository.UpdateArtist(id,artist);
         }
+
+        public IEnumerable<AlbumDto> GetArtistAlbums(int id) {
+            return _artistRepository.GetArtistAlbums(id);
+        }
+
     }
 }

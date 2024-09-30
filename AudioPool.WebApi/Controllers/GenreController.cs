@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace AudioPool.WebApi.Implimentations;
 
 [ApiController]
-[Route("genres")]
+[Route("api/genres")]
 public class GenreController(IGenreService genreService) : ControllerBase
 {
     private readonly IGenreService _genreService = genreService;

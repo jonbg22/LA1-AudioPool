@@ -1,35 +1,44 @@
 using AudioPool.Models.InputModels;
+using AudioPool.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AudioPool.WebApi.Implimentations
 {
     [ApiController]
-    [Route("artists")]
+    [Route("/api/artists")]
     public class ArtistController : ControllerBase
     {
+        private readonly IArtistService _artistService;
+
+        public ArtistController(IArtistService artistService)
+        {
+            _artistService = artistService;
+        }
+
         [HttpGet("")]
         public IActionResult GetAllArtists()
         {
-            throw new NotImplementedException();
+            return Ok(_artistService.GetAllArtist());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetArtistById")]
         public IActionResult GetArtistById(int id)
         {
-            throw new NotImplementedException();
+            return Ok(_artistService.GetArtistById(id));
         }
 
-        [HttpPost("{id}/albums")]
+        [HttpGet("{id}/albums")]
         public IActionResult GetArtistAlbums(int id)
         {
-            throw new NotImplementedException();
+            return Ok(_artistService.GetArtistAlbums(id));
         }
 
 
         [HttpPost("")]
         public IActionResult CreateNewArtist(ArtistInputModel artist)
         {
-            throw new NotImplementedException();
+            var createdId = _artistService.CreateNewArtist(artist);
+            return CreatedAtRoute("GetArtistById", new { id = createdId }, null);
         }
 
         [HttpPut("")]
@@ -37,10 +46,12 @@ namespace AudioPool.WebApi.Implimentations
         {
             throw new NotImplementedException();
         }
-        [HttpPatch("")]
-        public IActionResult LinkArtistToGenre()
+
+        [HttpPatch("{artistId}/genres/{genreId}")]
+        public IActionResult LinkArtistToGenre(int artistId, int genreId)
         {
-            throw new NotImplementedException();
+            _artistService.LinkArtistToGenre(artistId, genreId);
+            return Ok();
         }
     }
 }
