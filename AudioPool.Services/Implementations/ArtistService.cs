@@ -1,4 +1,6 @@
+using AudioPool.Models;
 using AudioPool.Models.Dtos;
+using AudioPool.Models.Entities;
 using AudioPool.Models.InputModels;
 using AudioPool.Repository.Interfaces;
 using AudioPool.Services.Interfaces;
@@ -19,29 +21,81 @@ namespace AudioPool.Services.Implimentations
             return _artistRepository.CreateNewArtist(artist);
         }
 
-        public IEnumerable<ArtistDto> GetAllArtist()
+        public Envelope<ArtistDto> GetAllArtist(int pageSize, int pageNumber)
         {
-            return _artistRepository.GetAllArtist();
+            var artists = _artistRepository.GetAllArtist();
+
+            foreach (ArtistDto a in artists)
+            {
+                var artistDetails = _artistRepository.GetArtistById(a.Id);
+                a.Links.AddReference("self", $"/api/artists/{a.Id}");
+                a.Links.AddReference("edit", $"/api/artists/{a.Id}");
+                a.Links.AddReference("delete", $"/api/artists/{a.Id}");
+                a.Links.AddReference("albums", $"/api/artists/{a.Id}/albums");
+        
+                a.Links.AddListReference("genres", artistDetails!.Genres.Select(g => $"/api/genres/{g.Id}"));
+            }
+
+            Envelope<ArtistDto> envelope = new(pageNumber, pageSize, artists);
+            return envelope;
         }
 
-        public ArtistDetailsDto GetArtistById(int id)
+        public ArtistDetailsDto? GetArtistById(int id)
         {
-            return _artistRepository.GetArtistById(id);
+            ArtistDetailsDto? artist = _artistRepository.GetArtistById(id);
+            if (artist == null)
+            {
+                return null;
+            }
+
+            artist.Links.AddReference("self", $"/api/artists/{artist.Id}");
+            artist.Links.AddReference("edit", $"/api/artists/{artist.Id}");
+            artist.Links.AddReference("delete", $"/api/artists/{artist.Id}");
+            artist.Links.AddReference("albums", $"/api/artists/{artist.Id}/albums");
+            artist.Links.AddListReference("genres", artist.Genres.Select(g => $"/api/genres/{g.Id}"));
+
+            return artist;
         }
 
-        public void LinkArtistToGenre(int artistId, int genreId)
+        public bool LinkArtistToGenre(int artistId, int genreId)
         {
-            _artistRepository.LinkArtistToGenre(artistId,genreId);
+            var isOk = _artistRepository.LinkArtistToGenre(artistId, genreId);
+            return isOk;
         }
 
-        public void UpdateArtist(int id, ArtistInputModel artist)
+        public bool UpdateArtist(int id, ArtistInputModel artist)
         {
-            _artistRepository.UpdateArtist(id,artist);
+            return _artistRepository.UpdateArtist(id, artist);
         }
 
-        public IEnumerable<AlbumDto> GetArtistAlbums(int id) {
-            return _artistRepository.GetArtistAlbums(id);
+        public IEnumerable<AlbumDto>? GetArtistAlbums(int id)
+        {
+            var albums = _artistRepository.GetArtistAlbums(id);
+            if (albums == null)
+            {
+                return null;
+            }
+
+            foreach (AlbumDto a in albums)
+            {
+                IEnumerable<AlbumDto>? artistAlbums = _artistRepository.GetArtistAlbums(a.Id);
+
+                a.Links.AddReference("self", $"/api/albums/{id}");
+                a.Links.AddReference("delete", $"/api/albums/{id}");
+                a.Links.AddReference("songs", $"/api/albums/{id}");
+                if (artistAlbums != null)
+                {
+                    a.Links.AddListReference("artists", artistAlbums.Select(a => $"/api/artists/{a.Id}"));
+                }
+                else
+                {
+                    a.Links.AddListReference("artists", []);
+                }
+            }
+
+            return albums;
         }
+
 
     }
 }

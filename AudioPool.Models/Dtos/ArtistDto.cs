@@ -1,6 +1,6 @@
 namespace AudioPool.Models.Dtos;
 
-public class ArtistDto
+public class ArtistDto : HyperMediaModel
 {
     public int Id { get; set; }
     public string Name { get; set; } = "";

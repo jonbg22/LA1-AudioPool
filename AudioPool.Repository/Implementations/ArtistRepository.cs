@@ -35,23 +35,31 @@ namespace AudioPool.Repository.Implimentations
 
         public IEnumerable<ArtistDto> GetAllArtist()
         {
-            return _musicDbContext.Artists.Select(a => new ArtistDto
-            {
-                Id = a.Id,
-                Name = a.Name,
-                Bio = a.Bio,
-                CoverImageUrl = a.CoverImageUrl,
-                DateOfStart = a.DateOfStart
-            }).ToList();
+            var artists = _musicDbContext.Artists
+                .OrderByDescending(a => a.DateOfStart)
+                .Select(a => new ArtistDto
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Bio = a.Bio,
+                    CoverImageUrl = a.CoverImageUrl,
+                    DateOfStart = a.DateOfStart
+                }).ToList();
+            return artists;
+
         }
 
-        public ArtistDetailsDto GetArtistById(int id)
+        public ArtistDetailsDto? GetArtistById(int id)
         {
             var artist = _musicDbContext
             .Artists
             .Include(a => a.Albums)
             .Include(a => a.Genres)
             .FirstOrDefault(a => a.Id == id);
+            
+            if (artist == null) {
+                return null;
+            }
 
             return new ArtistDetailsDto
             {
@@ -82,7 +90,8 @@ namespace AudioPool.Repository.Implimentations
             .Include(a => a.Albums)
             .FirstOrDefault(a => a.Id == id);
 
-            if (artist == null) {
+            if (artist == null)
+            {
                 return null;
             }
 
