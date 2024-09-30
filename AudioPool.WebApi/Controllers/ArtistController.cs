@@ -21,7 +21,7 @@ namespace AudioPool.WebApi.Implimentations
             return Ok(_artistService.GetAllArtist());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetArtistById")]
         public IActionResult GetArtistById(int id)
         {
             return Ok(_artistService.GetArtistById(id));
@@ -37,7 +37,8 @@ namespace AudioPool.WebApi.Implimentations
         [HttpPost("")]
         public IActionResult CreateNewArtist(ArtistInputModel artist)
         {
-            throw new NotImplementedException();
+            var createdId = _artistService.CreateNewArtist(artist);
+            return CreatedAtRoute("GetArtistById", new { id = createdId }, null);
         }
 
         [HttpPut("")]
@@ -49,7 +50,7 @@ namespace AudioPool.WebApi.Implimentations
         [HttpPatch("{artistId}/genres/{genreId}")]
         public IActionResult LinkArtistToGenre(int artistId, int genreId)
         {
-            _artistService.LinkArtistToGenre(artistId,genreId);
+            _artistService.LinkArtistToGenre(artistId, genreId);
             return Ok();
         }
     }

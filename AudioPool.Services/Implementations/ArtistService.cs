@@ -40,7 +40,7 @@ namespace AudioPool.Services.Implimentations
         }
 
         public IEnumerable<AlbumDto> GetArtistAlbums(int id) {
-            return _artistRepository.getArtistAlbums(id);
+            return _artistRepository.GetArtistAlbums(id);
         }
 
     }
